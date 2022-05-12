@@ -57,7 +57,7 @@ app.get('/weather', (req, res) => {
             });
         };
 
-        forecast(longitude, laditude, (error, {weather_descriptions, temperature, feelslike} = {}) => {
+        forecast(longitude, laditude, (error, {weather_descriptions, weather_icons, temperature, feelslike} = {}) => {
             if(error) {
                 return res.send({
                     error: error
@@ -68,6 +68,7 @@ app.get('/weather', (req, res) => {
                 searched_address: req.query.address,
                 location,
                 weather_descriptions: weather_descriptions[0],
+                weather_icon: weather_icons[0],
                 temperature,
                 feelslike
             });

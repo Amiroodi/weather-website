@@ -1,30 +1,40 @@
 const weatherForm = document.querySelector('form');
 const search = document.querySelector('input');
 const error_message = document.querySelector('#error-message');
-const success_message_1 = document.querySelector('#success-message-1');
-const success_message_2 = document.querySelector('#success-message-2');
-const success_message_3 = document.querySelector('#success-message-3');
-
+const results = document.querySelector("#results");
+const img_template = document.querySelector("#icon_template");
+const para_template = document.querySelector("#para_template");
 
 weatherForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const location = search.value;
 
-    error_message.textContent = '';
-    success_message_1.textContent = '';
-    success_message_2.textContent = '';
-    success_message_3.textContent = '';
+    results.textContent = '';
 
     fetch(`/weather?address=${encodeURIComponent(location)}`).then((response) => {
     response.json().then((data) => {
         if(data.error) {
-            return error_message.textContent = data.error;
+            let para_clone = para_template.content.cloneNode(true);
+            let para_tag = para_clone.querySelector('p');
+            para_tag.textContent = data.error;
+            results.appendChild(para_tag);
+            return;
         };
 
-        success_message_1.textContent = `Your location is ${data.location}.`;
-        success_message_2.textContent = `It is ${data.weather_descriptions}.`;
-        success_message_3.textContent = `It is ${data.temperature} degrees.`;
+        const para_data = [data.location, `It is ${data.weather_descriptions}.`, `It is ${data.temperature} degrees.`];
+
+        para_data.forEach(data => {
+            let para_clone = para_template.content.cloneNode(true);
+            let para_tag = para_clone.querySelector('p');
+            para_tag.textContent = data;
+            results.appendChild(para_tag);
+        });
+
+        const img_clone = img_template.content.cloneNode(true);
+        const img_tag = img_clone.querySelector('img');
+        img_tag.setAttribute('src', data.weather_icon);
+        results.appendChild(img_tag);
     });
 });
 });
