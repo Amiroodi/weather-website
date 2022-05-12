@@ -36,6 +36,13 @@ h1 {
     margin-bottom: 16px;
 }
 
-.portrait {
-    width: 250px;
+input {
+    height: 3em;
+    width: 18em;
+    margin-right: 2em;
+}
+
+button {
+    height: 3em;
+    width: 6em;
 }
