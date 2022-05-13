@@ -22,7 +22,7 @@ weatherForm.addEventListener('submit', (e) => {
             return;
         };
 
-        const para_data = [data.location, `It is ${data.weather_descriptions}.`, `It is ${data.temperature} degrees.`];
+        const para_data = [data.location, `It is ${data.weather_descriptions}.`, `It is ${data.temperature} degrees.`, `Humidity is ${data.humidity}%.`];
 
         para_data.forEach(data => {
             let para_clone = para_template.content.cloneNode(true);

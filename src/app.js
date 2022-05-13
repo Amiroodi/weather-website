@@ -57,7 +57,7 @@ app.get('/weather', (req, res) => {
             });
         };
 
-        forecast(longitude, laditude, (error, {weather_descriptions, weather_icons, temperature, feelslike} = {}) => {
+        forecast(longitude, laditude, (error, {weather_descriptions, weather_icons, temperature, feelslike, humidity} = {}) => {
             if(error) {
                 return res.send({
                     error: error
@@ -70,7 +70,8 @@ app.get('/weather', (req, res) => {
                 weather_descriptions: weather_descriptions[0],
                 weather_icon: weather_icons[0],
                 temperature,
-                feelslike
+                feelslike,
+                humidity
             });
         });
     });
