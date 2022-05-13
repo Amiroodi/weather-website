@@ -1,6 +1,7 @@
 body {
     color: #333333;
     font-family: arial;
+    font-size: 1.5em;
     max-width: 650px;
     padding: 0 16px;
     margin: 0 auto;
@@ -32,17 +33,15 @@ header a {
 }
 
 h1 {
-    font-size: 64px;
+    font-size: 260%;
     margin-bottom: 16px;
 }
 
 input {
-    height: 3em;
-    width: 18em;
+    padding: 1em 1em;
     margin-right: 2em;
 }
 
 button {
-    height: 3em;
-    width: 6em;
+    padding: 1em 1em;
 }
